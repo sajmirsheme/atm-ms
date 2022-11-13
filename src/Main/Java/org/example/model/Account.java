@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Account {
     private long ID;
-    private String SSD;
+    private String SSN;
     private String password;
     private long balance;
     private Date creationDate;
@@ -13,7 +13,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "ID=" + ID +
-                ", SSD='" + SSD + '\'' +
+                ", SSN='" + SSN + '\'' +
                 ", password='" + password + '\'' +
                 ", balance=" + balance +
                 ", creationDate=" + creationDate +
@@ -30,12 +30,12 @@ public class Account {
         this.ID = ID;
     }
 
-    public String getSSD() {
-        return SSD;
+    public String getSSN() {
+        return SSN;
     }
 
-    public void setSSD(String SSD) {
-        this.SSD = SSD;
+    public void setSSD(String SSN) {
+        this.SSN = SSN;
     }
 
     public String getPassword() {
