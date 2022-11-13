@@ -16,5 +16,10 @@ public class AccountRepository {
 
         entityManager.persist(account);
 
+        entityManager.getTransaction().commit();
+
+        entityManager.close();
+        entityManagerFactory.close();
+
     }
 }
