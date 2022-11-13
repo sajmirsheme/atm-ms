@@ -1,9 +1,10 @@
 package org.example.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
-@Entity
-@Table(name="accounts")
+ @Entity
+ @Table(name="accounts")
 public class Account {
     private long ID;
     private String SSN;
