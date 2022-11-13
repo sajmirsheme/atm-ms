@@ -8,6 +8,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long ID;
     private String SSN;
     private String password;
