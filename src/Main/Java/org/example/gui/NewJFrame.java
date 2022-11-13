@@ -1,7 +1,5 @@
 package org.example.gui;
 
-
-
 public class NewJFrame extends javax.swing.JFrame {
 
     /**
@@ -214,5 +212,4 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     // End of variables declaration
 }
-
 
