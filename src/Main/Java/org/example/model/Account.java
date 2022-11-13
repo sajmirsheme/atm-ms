@@ -1,7 +1,9 @@
 package org.example.model;
 
+import javax.persistence.*;
 import java.util.Date;
-
+@Entity
+@Table(name="accounts")
 public class Account {
     private long ID;
     private String SSN;

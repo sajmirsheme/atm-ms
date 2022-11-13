@@ -1,4 +1,4 @@
 package org.example.repository;
 
-public class tst {
+public class AccountRepository {
 }
