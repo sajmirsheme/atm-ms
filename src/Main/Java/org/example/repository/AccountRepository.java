@@ -8,21 +8,13 @@ import javax.persistence.Persistence;
 
 public class AccountRepository {
 
-
-    public void Insert(Account account) {
-
-        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("atmsystemdb-em");
+    public void insert(Account account) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("atmsystemdb-em");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
 
         entityManager.getTransaction().begin();
 
         entityManager.persist(account);
-
-        entityManager.getTransaction().commit();
-
-        entityManager.close();
-        entityManagerFactory.close();
 
     }
 }
