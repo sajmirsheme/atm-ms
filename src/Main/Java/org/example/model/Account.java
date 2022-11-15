@@ -1,14 +1,13 @@
 package org.example.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
  @Entity
  @Table(name="accounts")
-public class Account {
+ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID;
+    private Integer ID;
     private String SSN;
     private String password;
     private long balance;
@@ -27,11 +26,11 @@ public class Account {
                 '}';
     }
 
-    public long getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
