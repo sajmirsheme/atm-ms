@@ -1,7 +1,14 @@
 package org.example.gui;
 
-public class NewJFrame extends javax.swing.JFrame {
+import org.example.model.Account;
+import org.example.repository.AccountRepository;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class NewJFrame extends javax.swing.JFrame implements ActionListener {
+     public Account accountused;
     /**
      * Creates new form NewJFrame
      */
@@ -17,12 +24,12 @@ public class NewJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();//acc numb
         jPasswordField1 = new javax.swing.JPasswordField();//pass
         jButton1 = new javax.swing.JButton();//login
+        jButton1.addActionListener(this);
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();//name
@@ -30,48 +37,37 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();//pass
         jButton2 = new javax.swing.JButton();//krijo llogari
+        jButton2.addActionListener(this);
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-
+        jTextField4 = new javax.swing.JTextField();//ssn
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
         jLabel1.setText("ACOUNT NUMBER");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
-
         jLabel2.setText("     PASSWORD");
         jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
-
         jTextField1.setText(" ");
-
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("LOG IN");
 
+
+        jButton1.setText("LOG IN");
         jLabel3.setText("         Name");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jLabel4.setText("       Surname");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jTextField2.setText(" ");
-
         jTextField3.setText(" ");
-
         jLabel6.setText("        Password");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jButton2.setText("CREATE ACCOUNT");
-
         jLabel7.setText("      Id Number");
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jTextField4.setText(" ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,6 +155,49 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
+    public void actionPerformed(ActionEvent e) {
+
+        if(e.getSource()==jButton1){
+            String acountid=jTextField1.getText();
+            acountid=acountid.trim();
+            Integer number = Integer.parseInt(acountid);
+            String pasword=jPasswordField1.getText();
+            pasword=pasword.trim();
+
+            AccountRepository accountRepository=new AccountRepository();
+            Account accountused =accountRepository.GetAccount(number);
+            System.out.println(accountused);
+
+            if((number == accountused.getID())&&(pasword.equals(accountused.getPassword())))
+            {
+                new NewJFrame2().setVisible(true);
+                this.setVisible(false);
+            }
+            else JOptionPane.showMessageDialog(this,"TE DHENAT NUK JANE TE SAKTA. JU lUTEMI PROVONI PERSERI OSE NQS NUK KENI HAPNI NJE TE TILLE");
+
+
+        }
+
+
+        if(e.getSource()==jButton2){
+
+            String name=jTextField2.getText();
+            String surnname=jTextField3.getText();
+            String SSN=jTextField4.getText();
+            String paswordi=jPasswordField2.getText();
+
+            Account newaccount=new Account();
+            newaccount.setName(name);
+            newaccount.setSSD(SSN);
+            newaccount.setSurname(surnname);
+            newaccount.setPassword(paswordi);
+            AccountRepository accountRepository1=new AccountRepository();
+            accountRepository1.insert(newaccount);
+
+        }
+
+    }
+        // End of variables declaration
 
     /**
      * @param args the command line arguments
@@ -194,8 +233,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
     }
-
-    // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -210,6 +247,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    // End of variables declaration
-}
 
+
+}
