@@ -3,11 +3,12 @@ package org.example.gui;
 import org.example.model.Account;
 import org.example.repository.AccountRepository;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewJFrame extends javax.swing.JFrame implements ActionListener {
-
+     public Account accountused;
     /**
      * Creates new form NewJFrame
      */
@@ -155,28 +156,31 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
         // TODO add your handling code here:
     }
     public void actionPerformed(ActionEvent e) {
-        String acountid=jTextField1.getText();
-        int number = Integer.parseInt(acountid);
-       String pasword=jPasswordField1.getText();
 
-        AccountRepository accountRepository=new AccountRepository();
-       Account accountused =accountRepository.GetAccount(number);
-        System.out.println(accountused);
+        if(e.getSource()==jButton1){
+            String acountid=jTextField1.getText();
+            acountid=acountid.trim();
+            Integer number = Integer.parseInt(acountid);
+            String pasword=jPasswordField1.getText();
+            pasword=pasword.trim();
 
+            AccountRepository accountRepository=new AccountRepository();
+            Account accountused =accountRepository.GetAccount(number);
+            System.out.println(accountused);
 
-       /* if(e.getSource()==jButton2){
-            if((number == accountused.getID())&&(pasword==accountused.getPassword())){
-                this.setVisible(false);
+            if((number == accountused.getID())&&(pasword.equals(accountused.getPassword())))
+            {
                 new NewJFrame2().setVisible(true);
+                this.setVisible(false);
             }
-           else JOptionPane.showMessageDialog(this,"NONANANANANNA"+number+" "+pasword);
+            else JOptionPane.showMessageDialog(this,"TE DHENAT NUK JANE TE SAKTA. JU lUTEMI PROVONI PERSERI OSE NQS NUK KENI HAPNI NJE TE TILLE");
 
 
         }
-      */
+
+
         if(e.getSource()==jButton2){
 
-            new NewJFrame2().setVisible(true);
             String name=jTextField2.getText();
             String surnname=jTextField3.getText();
             String SSN=jTextField4.getText();

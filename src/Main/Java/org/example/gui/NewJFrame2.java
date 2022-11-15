@@ -1,8 +1,9 @@
 package org.example.gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-
-public class NewJFrame2 extends javax.swing.JFrame {
+public class NewJFrame2 extends javax.swing.JFrame implements ActionListener {
 
     /**
      * Creates new form NewJFrame2
@@ -21,13 +22,18 @@ public class NewJFrame2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();//bank statement
+        jButton1.addActionListener(this);
         jTextField1 = new javax.swing.JTextField();//afishim statement
         jButton2 = new javax.swing.JButton();//deposit
+        jButton2.addActionListener(this);
         jButton3 = new javax.swing.JButton();//withdraw
+        jButton3.addActionListener(this);
         jTextField2 = new javax.swing.JTextField();//sasia lekve
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();//delete account
+        jButton4.addActionListener(this);
         jButton5 = new javax.swing.JButton();//exit
+        jButton5.addActionListener(this);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,6 +57,10 @@ public class NewJFrame2 extends javax.swing.JFrame {
 
         jButton5.setText("Exit");
         jButton5.setBorder(new javax.swing.border.MatteBorder(null));
+
+
+
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +141,7 @@ public class NewJFrame2 extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -140,6 +151,32 @@ public class NewJFrame2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+
+    public void actionPerformed(ActionEvent e) {
+
+
+        if(e.getSource()==jButton1){
+
+        jTextField1.setText("TE DHENAT E KESAJ LLOAGARIE JANE ");
+        }
+        if(e.getSource()==jButton2){
+
+
+        }
+        if(e.getSource()==jButton3){
+
+
+        }
+        if(e.getSource()==jButton4){
+
+
+        }
+        if(e.getSource()==jButton5){
+
+System.exit(5);
+        }
+    }
+
     // End of variables declaration
 }
 

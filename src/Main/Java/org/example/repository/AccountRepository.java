@@ -89,13 +89,12 @@ public class AccountRepository {
 
         Account account=new Account();
         account.setID(id);
-        Account account1=entityManager.find(Account.class,new Integer((int) account.getID()));
+        Account account1=entityManager.find(Account.class,id);
 
         entityManager.getTransaction().commit();
 
         entityManager.close();
         entityManagerFactory.close();
-        System.out.println(account1);
         return account1;
 
     }
