@@ -9,7 +9,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long ID;
+    private int ID;
     private String SSN;
     private String password;
     private long balance;
@@ -28,11 +28,11 @@ public class Account {
                 '}';
     }
 
-    public long getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
