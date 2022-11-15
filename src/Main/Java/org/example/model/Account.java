@@ -9,7 +9,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long ID;
+    private int ID;
     private String SSN;
     private String password;
     private long balance;
