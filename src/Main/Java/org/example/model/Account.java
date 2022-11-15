@@ -2,12 +2,14 @@ package org.example.model;
 
 import javax.persistence.*;
 import java.util.Date;
- @Entity
- @Table(name="accounts")
- public class Account {
+@Entity
+@Table(name="accounts")
+public class Account {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ID;
+
+    private long ID;
     private String SSN;
     private String password;
     private long balance;
