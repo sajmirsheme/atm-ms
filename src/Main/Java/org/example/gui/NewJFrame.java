@@ -8,7 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewJFrame extends javax.swing.JFrame implements ActionListener {
-     public Account accountused;
+
+
     /**
      * Creates new form NewJFrame
      */
@@ -158,6 +159,8 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource()==jButton1){
+
+
             String acountid=jTextField1.getText();
             acountid=acountid.trim();
             Integer number = Integer.parseInt(acountid);
@@ -168,9 +171,11 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
             Account accountused =accountRepository.GetAccount(number);
             System.out.println(accountused);
 
-            if((number == accountused.getID())&&(pasword.equals(accountused.getPassword())))
+            if(number == accountused.getID() && pasword.equals(accountused.getPassword()))
+
             {
-                new NewJFrame2().setVisible(true);
+               NewJFrame2 x= new NewJFrame2(number);
+               x.setVisible(true);
                 this.setVisible(false);
             }
             else JOptionPane.showMessageDialog(this,"TE DHENAT NUK JANE TE SAKTA. JU lUTEMI PROVONI PERSERI OSE NQS NUK KENI HAPNI NJE TE TILLE");
@@ -191,6 +196,7 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
             newaccount.setSSD(SSN);
             newaccount.setSurname(surnname);
             newaccount.setPassword(paswordi);
+           // newaccount.setCreationDate(Date.valueOf("2022/02/27"));
             AccountRepository accountRepository1=new AccountRepository();
             accountRepository1.insert(newaccount);
 
@@ -243,7 +249,7 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
+      javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
