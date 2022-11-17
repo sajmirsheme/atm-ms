@@ -1,13 +1,15 @@
 import org.example.gui.NewJFrame;
 import org.example.model.Account;
+import org.example.model.Transaction;
 import org.example.repository.AccountRepository;
+import org.example.repository.TransactionRepository;
 
 import java.util.Date;
 
 public class ATMApplicationMS {
     public static void main(String[] args) {
         new NewJFrame().setVisible(true);
-
+      //  testinsertTransaction();
         //  testGetAll();
        //testgetInsert();
         //  testGetById();
@@ -70,6 +72,24 @@ public static void testUpdateDeposit()
 
         AccountRepository accountRepository=new   AccountRepository();
         accountRepository.GetAccount(1);
+
+
+    }
+
+    public static Transaction createTransaction(){
+
+        Transaction transaction=new Transaction();
+        transaction.setAmount(100);
+        transaction.setTransaction_Type("Deposit");
+        return transaction;
+    }
+
+    public static void testinsertTransaction(){
+
+        Transaction transaction=createTransaction();
+        TransactionRepository transactionRepository=new   TransactionRepository();
+        transactionRepository.insertTransaction(transaction);
+
 
 
     }

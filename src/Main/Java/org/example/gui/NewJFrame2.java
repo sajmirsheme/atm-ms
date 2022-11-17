@@ -1,19 +1,17 @@
 package org.example.gui;
 
-import org.example.model.Account;
-import org.example.repository.AccountRepository;
+import org.example.service.Services;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NewJFrame2 extends javax.swing.JFrame implements ActionListener {
 
-int b;
+int accountAccessed;
 
     public NewJFrame2( int a) {
 
-          b=a;
+          accountAccessed =a;
 
         initComponents();
     }
@@ -160,44 +158,42 @@ int b;
     private javax.swing.JTextField jTextField2;
 
     public void actionPerformed(ActionEvent e) {
-        Account acc=new Account();
-        AccountRepository accountRepository= new AccountRepository();
-        acc=accountRepository.GetAccount(b);
+
+        Services service=new Services();
+
+      //  Account acc=new Account();
+     //   AccountRepository accountRepository= new AccountRepository();
+       // acc=accountRepository.GetAccount(accountAccessed);
+
+
         //butoni i pare veprimi bank statement
-        if(e.getSource()==jButton1){
-
-        jTextField1.setText( " Llogaria juaj ka "+ acc.getBalance()+" euro");
+        if(e.getSource()==jButton1)
+        {
+            service.getAccountBalance(accountAccessed,jTextField1);
         }
+
         //verpimi i depozitimit te lekve
-        if(e.getSource()==jButton2){
-         String amount=jTextField2.getText();
-         amount=amount.trim();
-           int amountMoney=Integer.parseInt(amount);
-            accountRepository.UpdateDeposit(acc,amountMoney);
-            JOptionPane.showMessageDialog(this,"Ju sapo deposituat "+ amountMoney+ " euro ne llogari"+"\n"+
-                    "Gjendja e llogarise suaj eshte "+ (acc.getBalance()+amountMoney)+ " euro") ;
-
+        if(e.getSource()==jButton2)
+        {
+            service.depositMoney(accountAccessed,jTextField2);
         }
+
         //veprimi i terheqjes se lekve
-        if(e.getSource()==jButton3){
-
-            String amount=jTextField2.getText();
-            amount=amount.trim();
-            int amountMoney=Integer.parseInt(amount);
-            accountRepository.UpdateWithdraw(acc,amountMoney);
-            JOptionPane.showMessageDialog(this,"Ju sapo deposituat "+ amountMoney+ "  euro ne llogari "+ "\n"+
-                   "Gjendja e llogarise suaj eshte "+ (acc.getBalance()-amountMoney)+" euro");
-
+        if(e.getSource()==jButton3)
+        {
+         service.withdrawMoney(accountAccessed,jTextField2);
         }
-        if(e.getSource()==jButton4){
-
-            accountRepository.Delete(acc.getID());
-
+        //veprimi i fshirjes se llogarise
+        if(e.getSource()==jButton4)
+        {
+          service.deleteAccount(accountAccessed);
         }
+        //verpimi i mbylljes se applikacionit
         if(e.getSource()==jButton5)
         {
-             System.exit(0);
+      service.closeApplication();
         }
+
     }
 
     // End of variables declaration

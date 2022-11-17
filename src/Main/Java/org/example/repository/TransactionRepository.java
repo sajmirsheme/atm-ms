@@ -14,13 +14,14 @@ public class TransactionRepository {
         entityManagerFactory.close();
     }
 
-    public void insert(Transaction transaction) {
+    public void insertTransaction(Transaction transaction) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("atmsystemdb-em");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
 
         entityManager.persist(transaction);
+
 
         entityManager.getTransaction().commit();
 

@@ -1,9 +1,7 @@
 package org.example.gui;
 
-import org.example.model.Account;
-import org.example.repository.AccountRepository;
+import org.example.service.Services;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +13,7 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
      */
     public NewJFrame() {
         initComponents();
+
     }
 
     /**
@@ -25,6 +24,7 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
+
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();//acc numb
@@ -158,9 +158,11 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
 
+        Services service =new Services();
+
         if(e.getSource()==jButton1){
-
-
+service.login(jTextField1,jPasswordField1);
+/*
             String acountid=jTextField1.getText();
             acountid=acountid.trim();
             Integer number = Integer.parseInt(acountid);
@@ -180,12 +182,15 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
             }
             else JOptionPane.showMessageDialog(this,"TE DHENAT NUK JANE TE SAKTA. JU lUTEMI PROVONI PERSERI OSE NQS NUK KENI HAPNI NJE TE TILLE");
 
+*/
 
         }
 
 
         if(e.getSource()==jButton2){
 
+            service.createAccount(jTextField2,jTextField3,jTextField4,jPasswordField2);
+/*
             String name=jTextField2.getText();
             String surnname=jTextField3.getText();
             String SSN=jTextField4.getText();
@@ -199,7 +204,7 @@ public class NewJFrame extends javax.swing.JFrame implements ActionListener {
            // newaccount.setCreationDate(Date.valueOf("2022/02/27"));
             AccountRepository accountRepository1=new AccountRepository();
             accountRepository1.insert(newaccount);
-
+*/
         }
 
     }
