@@ -3,7 +3,9 @@ package org.example.service;
 
 import org.example.gui.NewJFrame2;
 import org.example.model.Account;
+import org.example.model.Transaction;
 import org.example.repository.AccountRepository;
+import org.example.repository.TransactionRepository;
 
 import javax.swing.*;
 
@@ -62,10 +64,16 @@ public void getAccountBalance(int accountid,JTextField textField){
 public  void depositMoney( int accountid,JTextField textField){
 
     AccountRepository accountRepository= new AccountRepository();
+    TransactionRepository transactionRepository=new TransactionRepository();
     acc=accountRepository.GetAccount(accountid);
+    Transaction transaction=new Transaction();
+
     String amount=textField.getText();
     amount=amount.trim();
     int amountMoney=Integer.parseInt(amount);
+    transaction.setAmount(amountMoney);
+    transaction.setTransaction_Type("Deposit");
+    transactionRepository.insertTransaction(transaction);
             accountRepository.UpdateDeposit(acc,amountMoney);
             JOptionPane.showMessageDialog(null,"Ju sapo deposituat "+ amountMoney+ " euro ne llogari"+"\n"+
             "Gjendja e llogarise suaj eshte "+ (acc.getBalance()+amountMoney)+ " euro") ;
@@ -75,12 +83,17 @@ public  void depositMoney( int accountid,JTextField textField){
 
     public  void withdrawMoney(int accountid,JTextField textField){
         acc=accountRepository.GetAccount(accountid);
+        TransactionRepository transactionRepository=new TransactionRepository();
+        Transaction transaction=new Transaction();
         String amount=textField.getText();
         amount=amount.trim();
         int amountMoney=Integer.parseInt(amount);
-        accountRepository.UpdateDeposit(acc,amountMoney);
-        JOptionPane.showMessageDialog(null,"Ju sapo deposituat "+ amountMoney+ " euro ne llogari"+"\n"+
-                "Gjendja e llogarise suaj eshte "+ (acc.getBalance()+amountMoney)+ " euro") ;
+        accountRepository.UpdateWithdraw(acc,amountMoney);
+        transaction.setAmount(amountMoney);
+        transaction.setTransaction_Type("Withdraw");
+        transactionRepository.insertTransaction(transaction);
+        JOptionPane.showMessageDialog(null,"Ju sapo terhoqet "+ amountMoney+ " euro ne llogari"+"\n"+
+                "Gjendja e llogarise suaj eshte "+ (acc.getBalance()-amountMoney)+ " euro") ;
 
     }
 
